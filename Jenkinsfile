@@ -19,14 +19,5 @@ pipeline {
                 echo 'Clonning the source code.'
             }
         }
-
-        stage(Initialization) {
-            steps {
-                sh '''terraform init
-                terraform fmt
-                terraform validate'''
-                
-            } 
-        }
     }
 }

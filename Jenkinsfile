@@ -8,7 +8,7 @@ pipeline {
             // Cloning the source code from GitHub.
             steps {
                 dir("terraform") {
-                    git 'https://github.com/stephanemiafo/terraformforiam.git'
+                    git branch: 'dev-branch', url: 'https://github.com/stephanemiafo/terraformforiam.git'
                 }
                 
            

@@ -4,8 +4,9 @@ pipeline {
 
     stages {
         stage(checkout) {
+            // Cloning the source code from GitHub.
             steps {
-                echo 'Hello World!'
+                git branch: 'dev-branch', url: 'https://github.com/stephanemiafo/terraformforiam.git'
             }
         }
     }

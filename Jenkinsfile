@@ -23,6 +23,8 @@ pipeline {
                         cd terraform/
                         terraform init
                         terraform fmt
+                        terraform plan -out tfplan
+                        terraform show -no-color tfplan > tfplan.txt
                     '''
                 } 
             } 

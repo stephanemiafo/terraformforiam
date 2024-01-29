@@ -7,8 +7,11 @@ pipeline {
         stage('checkout') {
             // Cloning the source code from GitHub.
             steps {
-                git branch: 'dev-branch', url: 'https://github.com/stephanemiafo/terraformforiam.git'
-                echo 'Clonning the source code.'
+                dir("terraform") {
+                    git 'https://github.com/stephanemiafo/terraformforiam.git'
+                }
+                
+           
             }
         }
         stage('Initialization_and_formating') {
@@ -16,6 +19,8 @@ pipeline {
             steps {
                 withCredentials([aws(credentialsId: 'aws-integration-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
+                        pwd
+                        cd terraform/
                         terraform init
                         terraform fmt
                     '''

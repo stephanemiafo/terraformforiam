@@ -21,11 +21,13 @@ pipeline {
         }
 
         stage(Initialization) {
-            sh '''
+            steps {
+              sh '''
             terraform init
             terraformt fmt
             terraform validate
-            '''
+            '''  
+            } 
         }
     }
 }
